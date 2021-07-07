@@ -1,0 +1,32 @@
+<h4>{{entry.user.firstName}}</h4>
+<h5>Edit Entry</h5>
+<div class="row">
+    <form action="/entries/{{entry._id}}" method="POST" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title"value="{{entry.title}}">
+                <label for="title"><b>Title</b></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="about" name="about"value="{{entry.about}}">
+                <label for="about"><b>About</b></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h5>Description:</h5>
+                <textarea id="body" name="body">{{entry.body}}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn dark blue darken-4">
+            <a href="/dashboard" class="btn red darken-4">Cancel</a>
+        </div>
+    </form>
+</div>

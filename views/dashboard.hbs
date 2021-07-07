@@ -1,0 +1,42 @@
+<h4><u>Dashboard</u></h4>
+<h5>Hey! {{name}}</h5>
+{{#if entries}}
+<p><b>Take a look at your collection<br>
+may be you missed something...<hr style=" border-top: 1px solid red"></b>
+</p>
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>About</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each entries}}
+        <tr>
+            <td><a href="/entries/{{_id}}">{{title}}</a></td>
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+            <td>{{about}}</td>
+            <td>
+                <a href="/entries/edit/{{_id}}" class="btn btn-float brown">
+                    <i class="fas fa-edit"></i>
+                </a>
+             <form action="/entries/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p><b>your collection is empty!
+    <br>
+    start to write</b>
+</p>
+{{/if}}
